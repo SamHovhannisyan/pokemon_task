@@ -1,0 +1,6 @@
+export const GET_IMAGES = "GET_IMAGES"
+export const SET_PAGE = "SET_PAGE"
+export const RESET = "RESET"
+export const GET_CATEGORIES = "GET_CATEGORIES"
+export const SAVE_POKEMONS = "SAVE_POKEMONS"
+export const SAVE_SEARCHED_POKEMON = "SAVE_SEARCHED_POKEMON"
