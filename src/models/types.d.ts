@@ -1,26 +1,7 @@
-interface category {
-    id:number
-      name:string
-}
-interface image {
-   breeds: [],
-   categories: category[],
-   id: string,
-   "url": string,
-   "width": number,
-   "height": number
-}
-type ImageState = {
-   images:image[],
-   page:number
-}
-type CategoryState = {
+type PokemonState = {
    pokemons:any[],
    selected:category | null
-}
-type GetCategory = {
-   type:string
-   payload: category[]
+   pokemonDetail: any,
 }
 
 type CategoryAction = {

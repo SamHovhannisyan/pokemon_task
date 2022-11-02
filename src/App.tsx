@@ -1,19 +1,12 @@
-//styles
-// import './App.scss';
-
-import React,{Suspense,lazy, useEffect} from "react";
+import React,{Suspense, lazy, useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import PokemonDetails from "./components/pokemonId";
 import Pokemons from "./containers/pokemons";
 
-
 function App() {
-  // useEffect(() => {
-  //   AppController.init()
-  // }, [])
   return (
-    <div className="App">
+    <div>
         <Suspense fallback={<div>loading...</div>}>
             <Header />
             <Routes>

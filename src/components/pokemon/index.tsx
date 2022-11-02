@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
+import './pokemon.scss'
 
-const Pokemon = ({pokemon, pokeId}: any) => {
+type Props = {
+    pokemon:string,
+    pokeId: string
+}
+
+const Pokemon: React.FC<Props> = ({pokemon, pokeId}) => {
     return (
-        <>
-        <Link to={`type/${pokeId}`}>
-            <div>{pokemon.name}</div>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeId}.png`} alt="" />
-        </Link>
-        </>
+        <div className="item">
+            <Link to={`type/${pokeId}`} className="title">
+                <h2>{pokemon}</h2>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeId}.png`} alt="" />
+            </Link>
+        </div>
     ) 
 }
 

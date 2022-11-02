@@ -1,0 +1,14 @@
+.main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.items {
+    display: grid;
+    padding: 20px 0;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 20px;
+}

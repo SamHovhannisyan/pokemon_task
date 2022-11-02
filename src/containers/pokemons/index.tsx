@@ -5,8 +5,9 @@ import Pokemon from '../../components/pokemon';
 import AppController from '../../controllers/app';
 import { pokemonsSelector, searchedPokemonSelector } from '../../store/selectors';
 import { getPokeIdFromUrl } from '../../utils';
+import './main.scss'
 
-const Pokemons = () => {
+const Pokemons: React.FC = () => {
     const {results, next, previous} = useSelector(pokemonsSelector, shallowEqual);
     const searchedPokemon = useSelector(searchedPokemonSelector, shallowEqual);
     const [dataUrl, setDataUrl] = useState(API_URI);
@@ -20,7 +21,7 @@ const Pokemons = () => {
         setDataUrl(url);
     };
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
 
@@ -29,24 +30,26 @@ const Pokemons = () => {
     }
 
  
-    return <div>
+    return <div className='main'>
         <div>
             <input type="text" value={value} onChange={handleChange}/>
             <button onClick={handleSearch(value)}>Search</button>
         </div>
-        {
-            !searchedPokemon ?
-            results && results.map((pokemon: any) => <Pokemon 
-                                                        pokemon={pokemon}
-                                                        key={pokemon.url}
-                                                        pokeId={getPokeIdFromUrl(pokemon.url)}
-                                                        />)  : 
-                                                        <Pokemon 
-                                                        pokemon={searchedPokemon.name}
-                                                        pokeId={searchedPokemon.id}
-                                                        />
-                                                             
-        }
+        <div className='items'>
+            {
+                !searchedPokemon ?
+                results && results.map((pokemon: any) => <Pokemon 
+                                                            pokemon={pokemon.name}
+                                                            key={pokemon.url}
+                                                            pokeId={getPokeIdFromUrl(pokemon.url)}
+                                                            />)  : 
+                                                            <Pokemon 
+                                                            pokemon={searchedPokemon.name}
+                                                            pokeId={searchedPokemon.id}
+                                                            />
+                                                                
+            }
+        </div>
         <div>
             <button onClick={handleApiUrl(previous)} disabled={!previous}>Prev Pokemons</button>
             <button onClick={handleApiUrl(next)} disabled={!next}>Next Pokemons</button>

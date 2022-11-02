@@ -1,14 +1,15 @@
-import { SAVE_POKEMONS, SAVE_SEARCHED_POKEMON } from "../action-types"
+import { SAVE_DETAIL_POKEMONS, SAVE_POKEMONS, SAVE_SEARCHED_POKEMON } from "../action-types"
 
-const initialState: CategoryState = {
+const initialState: PokemonState = {
     pokemons: [],
-    selected: null
+    selected: null,
+    pokemonDetail: []
 }
 
 const pokemonsReducer = (
-    state: CategoryState = initialState,
+    state: PokemonState = initialState,
     action: CategoryAction
-): CategoryState => {
+): PokemonState => {
     switch (action.type) {
         case SAVE_POKEMONS:
             return {
@@ -20,11 +21,11 @@ const pokemonsReducer = (
                 ...state,
                 selected: action.payload,
             }
-        // case SELECT_CATEGORY:
-        //     return {
-        //         ...state,
-        //         selected: action.payload,
-        //     }
+        case SAVE_DETAIL_POKEMONS:
+            return {
+                ...state,
+                pokemonDetail: action.payload,
+            }
     }
     return state
 }
